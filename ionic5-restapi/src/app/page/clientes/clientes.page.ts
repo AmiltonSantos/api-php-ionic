@@ -36,10 +36,27 @@ export class ClientesPage implements OnInit {
         }).then(modal => {
             modal.present();
             return modal.onDidDismiss();
-        }).then(({data}) =>{
+        }).then(({ data }) => {
+            // console.log(data);
             this.service.getAll().subscribe(response => {
                 this.clientes = response;
             })
-        });
+        })
+    }
+
+    atualizar(cli: ClienteModel) {
+        // console.log(cli);
+        this.modalCtrl.create({
+            component: ModalClientePage,
+            componentProps: { cli }
+        }).then(modal => {
+            modal.present();
+            return modal.onDidDismiss();
+        }).then(({ data }) => {
+            // console.log(data);
+            this.service.getAll().subscribe(response => {
+                this.clientes = response;
+            })
+        })
     }
 }

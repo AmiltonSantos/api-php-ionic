@@ -12,7 +12,8 @@
     <ion-list>
       <ion-item-sliding *ngFor="let cli of clientes">
         <ion-item-options>
-          <ion-item-option color="danger" (click)="remover(cli.id)">DELETE</ion-item-option>
+          <ion-item-option color="danger" (click)="remover(cli.id)">Deletar</ion-item-option>
+          <ion-item-option color="success" (click)="atualizar(cli)">Atualizar</ion-item-option>
         </ion-item-options>
         <ion-item>
           {{cli.nome}}
