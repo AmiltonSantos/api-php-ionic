@@ -3,7 +3,7 @@
     <ion-button slot="end" (click)="fecharModal()">
       Fechar
     </ion-button>
-    <ion-title>Novo Cliente</ion-title>
+    <ion-title>{{this.atualizar ? 'Atualizar Cliente' : 'Novo Cliente'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +22,7 @@
       <ion-input [(ngModel)]="dados.cidade" name="cidade"></ion-input>
     </ion-item>
     <ion-button expand="block" fill="outline" type="submit">
-      Cadastrar
+      {{this.atualizar ? 'Atualizar' : 'Cadastrar'}}
     </ion-button>
   </form>
 </ion-content>

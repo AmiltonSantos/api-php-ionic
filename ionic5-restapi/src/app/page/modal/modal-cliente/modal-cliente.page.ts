@@ -18,10 +18,17 @@ export class ModalClientePage implements OnInit {
         private service: ClienteService) { }
 
     ngOnInit() {
+        const dados = {
+            nome: '',
+            email: '',
+            cidade: ''
+        }
         if (this.cli) {
             // console.log("atualizar");
             this.atualizar = true;
             this.dados = this.cli;
+        } else {
+            this.dados = dados;
         }
     }
 
