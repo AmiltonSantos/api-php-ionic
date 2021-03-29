@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { ClienteModel } from 'src/app/model/cliente.model';
 import { ClienteService } from 'src/app/servico/cliente.service';
+import { ModalClientePage } from '../modal/modal-cliente/modal-cliente.page';
 
 @Component({
     selector: 'app-clientes',
@@ -10,7 +12,8 @@ import { ClienteService } from 'src/app/servico/cliente.service';
 export class ClientesPage implements OnInit {
     clientes: ClienteModel[];
 
-    constructor(private service: ClienteService) { }
+    constructor(private service: ClienteService,
+        private modalCtrl: ModalController) { }
 
     ngOnInit() {
         this.service.getAll().subscribe(response => {
@@ -25,5 +28,18 @@ export class ClientesPage implements OnInit {
                 this.clientes = response;
             })
         })
+    }
+
+    novoCliente() {
+        this.modalCtrl.create({
+            component: ModalClientePage
+        }).then(modal => {
+            modal.present();
+            return modal.onDidDismiss();
+        }).then(({data}) =>{
+            this.service.getAll().subscribe(response => {
+                this.clientes = response;
+            })
+        });
     }
 }

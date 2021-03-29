@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'clientes',
     loadChildren: () => import('./page/clientes/clientes.module').then( m => m.ClientesPageModule)
+  },
+  {
+    path: 'modal-cliente',
+    loadChildren: () => import('./page/modal/modal-cliente/modal-cliente.module').then( m => m.ModalClientePageModule)
   }
 ];
 
