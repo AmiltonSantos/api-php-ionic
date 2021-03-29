@@ -4,7 +4,12 @@
     header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-    $con = new mysqli('localhost','root', '','nomedobanco');
+    $host = 'localhost'; // O nome do localhost onde esta armazendo do banco
+    $usuario = 'usuario'; // O nome do usuário cadastrado para acesso do banco, o padrão é -> root
+    $senha = 'senha'; // A senha para acessar o banco de dados
+    $banco = 'nomedobanco'; // Colocar o nome do banco de dados criado no phpMyAdmin
+
+    $con = new mysqli($host, $usuario, $senha, $banco);
     $table = "nometabelabd";
 
     if ($con -> connect_error){
