@@ -28,12 +28,7 @@ export class ClientesPage implements OnInit {
             this.service.getAll().subscribe(response => {
                 this.clientes = response;
             });
-            this.toastCtrl.create({
-                message: 'Usuário Deletado com sucesso!',
-                duration: 2000
-            }).then(toast =>{
-                toast.present();
-            })
+            this.presentToast('Usuário Deletado com sucesso!');
         })
     }
 
@@ -48,12 +43,7 @@ export class ClientesPage implements OnInit {
             this.service.getAll().subscribe(response => {
                 this.clientes = response;
             });
-            this.toastCtrl.create({
-                message: 'Usuário Cadastrado com sucesso!',
-                duration: 2000
-            }).then(toast =>{
-                toast.present();
-            })
+            this.presentToast('Usuário Cadastrado com sucesso!');
         })
     }
 
@@ -70,12 +60,16 @@ export class ClientesPage implements OnInit {
             this.service.getAll().subscribe(response => {
                 this.clientes = response;
             });
-            this.toastCtrl.create({
-                message: 'Usuário Atualizado com sucesso!',
-                duration: 2000
-            }).then(toast =>{
-                toast.present();
-            })
+            this.presentToast('Usuário Atualizado com sucesso!');
         })
+    }
+
+    async presentToast(msg: string) {
+        const toast = await this.toastCtrl.create({
+            message: msg,
+            cssClass: 'toastCss',
+            duration: 3000
+        });
+        toast.present();
     }
 }
